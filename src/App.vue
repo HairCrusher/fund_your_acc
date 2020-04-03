@@ -1,28 +1,40 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <v-app>
+        <AppBar/>
+        <Modal/>
+
+        <v-content>
+            <v-container>
+                <v-btn
+                        color="primary"
+                        @click="$eventBus.$emit('modal', true)"
+                >
+                    Open modal
+                </v-btn>
+            </v-container>
+        </v-content>
+    </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+    import AppBar from "./components/AppBar";
+    import Modal from "./components/Modal";
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+    export default {
+        name: 'App',
+        components: {
+            Modal,
+            AppBar,
+        }
+    };
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style scoped>
+    .v-btn {
+        margin-top: 4rem;
+    }
+    
+    .container {
+        text-align: center;
+    }
 </style>
